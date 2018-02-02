@@ -13,6 +13,7 @@ namespace LoggingKata.Test
         [Test]
         public void EmptyStringReturnNull ()
         {
+            //Arrange
             var empty = "";
             var emptyStringTest = new TacoParser();
 
