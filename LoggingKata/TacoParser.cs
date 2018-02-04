@@ -20,25 +20,35 @@ namespace LoggingKata
 
         public ITrackable Parse(string line)
         {
-            var cells = line.Split(',');
-            var longitude = Double.Parse(cells[0]);
-            var latitude = Double.Parse(cells[1]);
-            var name = cells[2];
+            if (string.IsNullOrEmpty(line)) { return null; }
 
-            if (cells.Length < 3)
+            var cells = line.Split(',');
+
+            if (cells.Length < 2)
             {
                 Console.WriteLine("Something went wrong");
                 return null; // Log that and return null
             }
 
-            Console.WriteLine("test");
-            Console.ReadLine();
+            double lon;
+            double lat;
+
+            try
+            {
+                lon = double.Parse(cells[0]);
+                lat = double.Parse(cells[1]);
+            }
+            catch (Exception e)
+            {
+                Logger.Error("Failed to parse lat and long", e);
+                return null;
+            }
 
             //return value;
-            var tacoBell = new TacoBell()
+            var tacoBell = new TacoBell
             {
-                Name = name,
-                Location = new Point(latitude, longitude)
+                Name = cells.Length > 2 ? cells[2] : null,
+                Location = new Point { Latitude = lat, Longitude = lon }
             };
 
             return tacoBell;
@@ -46,3 +56,26 @@ namespace LoggingKata
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                

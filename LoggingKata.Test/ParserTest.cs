@@ -22,7 +22,6 @@ namespace LoggingKata.Test
 
             //Assert:
             Assert.IsNull(result);
-            //TODO: Complete ShouldParseLine
         }
 
         [Test]
@@ -47,6 +46,20 @@ namespace LoggingKata.Test
             var parser = new TacoParser();
 
            //Act
+            var result = parser.Parse(line);
+
+            //Assert
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void ShouldReturnLatAndLon()
+        {
+            //Arrange
+            const string line = "-84.677017, Testing";
+            var parser = new TacoParser();
+
+            //Act
             var result = parser.Parse(line);
 
             //Assert
