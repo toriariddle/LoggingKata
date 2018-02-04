@@ -25,10 +25,19 @@ namespace LoggingKata
             }
 
             Logger.Info("Log initialized");
-            var lines = File.ReadAllLines(args[0]);
+            var file = Path.Combine(Environment.CurrentDirectory, "Taco_Bell-US-AL-Alabama.csv");
+
+            var lines = File.ReadAllLines(file);
             var parser = new TacoParser();
+
             var locations = lines.Select(line => parser.Parse(line));
-            var experiment = new TacoBell();
+
+            foreach (var location in locations)
+            {
+                Console.WriteLine("location: " + location.Name);
+            }
+
+       
 
 
 
