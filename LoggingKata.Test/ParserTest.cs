@@ -11,17 +11,17 @@ namespace LoggingKata.Test
     public class TacoParserTestFixture
     {
         [Test]
-        public void EmptyStringReturnNull ()
+        public void EmptyStringReturnNull()
         {
             //Arrange
-            var empty = "";
-            var emptyStringTest = new TacoParser();
+            const string line = null;
+            var parser = new TacoParser();
 
             //Act
-            var valueReturned = emptyStringTest.Parse(empty);
+            var result = parser.Parse(line);
 
             //Assert:
-            Assert.IsNull(valueReturned);
+            Assert.IsNull(result);
             //TODO: Complete ShouldParseLine
         }
 
@@ -29,10 +29,14 @@ namespace LoggingKata.Test
         public void ShouldParseLine()
         {
             //Arrange
-            var sampleData = "-84.677017, 34.073638 , Taco Bell Acwort...";
+            const string line = "-84.677017, 34.073638, \"Taco Bell Acwort... (Free trial * Add to Cart for a full POI info) ";
+            var parser = new TacoParser();
 
-            //TODO: Complete ShouldParseLine
+           //Act
+            var result = parser.Parse(line);
 
+            //Assert
+            Assert.IsNotNull(result);
         }
     }
 }
