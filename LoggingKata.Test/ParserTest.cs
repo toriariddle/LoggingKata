@@ -42,10 +42,11 @@ namespace LoggingKata.Test
         public void ShouldParseString()
         {
             //Arrange
-            const string line = "-84.677017, 34.073638, \"Taco Bell Acwort... (Free trial * Add to Cart for a full POI info) ";
+            const string line =
+                "-84.677017, 34.073638, \"Taco Bell Acwort... (Free trial * Add to Cart for a full POI info) ";
             var parser = new TacoParser();
 
-           //Act
+            //Act
             var result = parser.Parse(line);
 
             //Assert
@@ -65,5 +66,38 @@ namespace LoggingKata.Test
             //Assert
             Assert.IsNotNull(result);
         }
+
+        [Test]
+        public void EmptyStringNoDescription()
+        {
+            //Arrange
+            const string line = " ";
+            var parser = new TacoParser();
+
+            //Act
+            var result = parser.Parse(line);
+
+            //Assert:
+            Assert.IsNotNull(result);
+        }
     }
 }
+
+//    [Test]
+        /*public void ShouldNotParse();
+        {
+            //Arrangevar parser = TacoParser();
+            var
+            const string line = "-84.677017, 34.073638, \"Taco Bell Acwort... (Free trial * Add to Cart for a full POI info) ";
+            var parser = new TacoParser();
+
+            //Act
+            foreach (var val in nonParseValues)
+            {
+                var result = parser.Parse(val);
+            };
+
+            //Assert
+            Assert.IsNull(result, $ "(sult) should be null");*/
+
+
