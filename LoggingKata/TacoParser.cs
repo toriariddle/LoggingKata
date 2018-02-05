@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using log4net;
 
 namespace LoggingKata
 {
-    /// <summary>
-    /// Parses a POI file to locate all the TacoBells
-    /// </summary>
     public class TacoParser
     {
-        private static readonly ILog Logger =
-            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public ITrackable Parse(string line)
         {
@@ -22,7 +16,7 @@ namespace LoggingKata
             if (cells.Length < 2)
             {
                 Logger.Warn("Missing a lat or lon");
-                return null; // Log that and return null
+                return null;
             }
 
             double lon;
@@ -39,7 +33,6 @@ namespace LoggingKata
                 return null;
             }
 
-            //return value;
             var tacoBell = new TacoBell
             {
                 Name = cells.Length > 2 ? cells[2] : null,
@@ -50,4 +43,3 @@ namespace LoggingKata
         }
     }
 }
-                            

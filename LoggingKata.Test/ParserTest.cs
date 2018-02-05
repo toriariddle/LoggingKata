@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace LoggingKata.Test
 {
@@ -82,22 +77,3 @@ namespace LoggingKata.Test
         }
     }
 }
-
-//    [Test]
-        /*public void ShouldNotParse();
-        {
-            //Arrangevar parser = TacoParser();
-            var
-            const string line = "-84.677017, 34.073638, \"Taco Bell Acwort... (Free trial * Add to Cart for a full POI info) ";
-            var parser = new TacoParser();
-
-            //Act
-            foreach (var val in nonParseValues)
-            {
-                var result = parser.Parse(val);
-            };
-
-            //Assert
-            Assert.IsNull(result, $ "(sult) should be null");*/
-
-
